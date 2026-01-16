@@ -1,0 +1,120 @@
+/* --- UNIVERSAL MODERN STYLES --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  /* Fluid Spacing: 15px sa phone, nagiging hanggang 5% sa desktop */
+  --container-padding: clamp(15px, 5%, 80px);
+  
+  /* Primary Colors mula sa iyong Dashboard */
+  --primary: #4f46e5;
+  --bg-light: #f8fafc;
+  --text-main: #1e293b;
+  --text-sub: #64748b;
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent; /* Clean touch sa mobile */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-main);
+  line-height: 1.5;
+  overflow-x: hidden; /* Iwas sa horizontal scroll */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- UNIVERSAL RESPONSIVE CONTAINER --- */
+.app-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  padding: 0 var(--container-padding);
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- SMART GRID SYSTEM --- 
+   Kusa itong mag-aadjust: 1 column sa phone, 2-3 sa tablet, 4 sa desktop
+*/
+.responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: clamp(15px, 2vw, 25px);
+  width: 100%;
+}
+
+/* --- CARDS & PANELS --- */
+.card {
+  background: white;
+  border-radius: clamp(16px, 2vw, 24px);
+  padding: clamp(20px, 3vw, 30px);
+  border: 1px solid #f1f5f9;
+  box-shadow: var(--card-shadow);
+  width: 100%;
+}
+
+/* --- MOBILE-FIRST TOUCH POINTS --- */
+button, input, select, .menu-item {
+  min-height: 50px; /* Mas madaling pindutin sa phone */
+  font-family: inherit;
+  font-size: 16px; /* Iwas sa automatic zoom ng iPhones */
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+button:active {
+  transform: scale(0.96); /* Visual feedback kapag pinindot */
+}
+
+/* --- BREAKPOINTS FOR SPECIFIC DEVICES --- */
+
+/* 1. Large Desktop (Para hindi sobrang haba ang mga cards) */
+@media (min-width: 1440px) {
+  .app-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+}
+
+/* 2. Tablet Size (768px and below) */
+@media (max-width: 768px) {
+  .brand-section { display: none; } /* Tinitipid ang space sa Login */
+  
+  .header-title {
+    font-size: 1.5rem !important;
+  }
+}
+
+/* 3. Small Phone Size (480px and below) */
+@media (max-width: 480px) {
+  :root {
+    --container-padding: 15px; /* Saktong dikit sa gilid para sa phone */
+  }
+  
+  .card {
+    padding: 20px;
+  }
+}
+
+/* --- UTILITIES --- */
+.fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Minimalist Scrollbar para sa malinis na UI */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}

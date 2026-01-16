@@ -1,0 +1,40 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ROOT APP CONTAINER */
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  background: #f5f7fb;
+}
+
+/* APP WRAPPER (PHONE FIRST) */
+.app {
+  width: 100%;
+  max-width: 430px; /* phone width */
+  min-height: 100vh;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* DESKTOP VIEW */
+@media (min-width: 768px) {
+  #root {
+    align-items: center;
+  }
+
+  .app {
+    min-height: 90vh;
+    max-width: 900px;
+    border-radius: 20px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+  }
+}
